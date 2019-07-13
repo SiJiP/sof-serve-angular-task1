@@ -1,0 +1,12 @@
+ul{
+    background-color: aliceblue;
+}
+.lis{
+    font-size: 2rem;
+    color: darkslategray;
+    font-family: Verdana;
+    list-style: none;
+    padding: 1rem;
+    text-align: center;
+    
+}
