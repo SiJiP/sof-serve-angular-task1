@@ -4,10 +4,10 @@
         <input type="text" [formControl]="name" name="name" class="form-control mb-4" placeholder="Name" required>
         <input type="text" [formControl]="surname" name="surname" class="form-control mb-4" placeholder="Surname" required>
         <input type="email" [formControl]="email" name="email" class="form-control mb-4" placeholder="Email" required>
-        <button class="btn btn-info btn-block" type="button" (click)="changes()">Add</button>
+        <button class="btn btn-info btn-block" type="button" (click)="onClick()">Add</button>
     </form>
-<ul >
-    <li class="lis" *ngFor="let user of users">{{user.name}} {{user.surname}} | email: {{user.email}}</li>
+<ul>
+    <li class="lis" *ngFor="let user of users" (click)="onDelete($event)">{{user.name}} {{user.surname}} | email: {{user.email}}</li>
 </ul>
 
 </div>
