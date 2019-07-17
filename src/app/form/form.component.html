@@ -1,13 +1,13 @@
 <div class="container">
     <form class="text-center border border-middle p-5" action="#">
-        <p class="h4 mb-4">Add user</p>
-        <input type="text" [formControl]="name" name="name" class="form-control mb-4" placeholder="Name" required>
-        <input type="text" [formControl]="surname" name="surname" class="form-control mb-4" placeholder="Surname" required>
-        <input type="email" [formControl]="email" name="email" class="form-control mb-4" placeholder="Email" required>
+        <h1>To Do List</h1>
+        <input type="text" [formControl]="todo" name="todo" class="form-control mb-4" placeholder="To Do" required>
         <button class="btn btn-info btn-block" type="button" (click)="onClick()">Add</button>
     </form>
 <ul>
-    <li class="lis" *ngFor="let user of users" (click)="onDelete($event)">{{user.name}} {{user.surname}} | email: {{user.email}}</li>
+    <li class="lis" *ngFor="let task of list" (click) = "onCheck($event)">
+        {{task.todo}}
+    <span class="delete" (click)="onDelete($event)">[X]</span>
+    </li>
 </ul>
-
 </div>

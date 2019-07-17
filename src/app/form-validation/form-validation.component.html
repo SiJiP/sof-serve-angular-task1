@@ -1,0 +1,46 @@
+<div class="container">
+
+<form [formGroup]="form" (ngSubmit)="login()" class="m-3 border border-prime p-5">
+    <h1 class="header mt-3">Registration</h1>
+    <div class="form-group">
+        <label for="username" class="mt-2">Name & Surname</label>
+        <input
+            formControlName = "username" 
+            id="username" 
+            type="text" 
+            class="form-control">
+            <div *ngIf="form.get('username').errors?.pattern" class="alert alert-danger">Incorrect user name. Username should contain "big and small letter". Length not less 3</div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="mt-2">Password</label>
+        <input 
+            formControlName = "password"
+            id="password" 
+            type="password" 
+            class="form-control">
+            <div *ngIf="form.get('password').errors?.pattern" class="alert alert-danger">Incorrect password. Password should contain "big letter", "small letter" and "number". Length not less 8</div>
+    </div>
+    <div class="form-group">
+            <label for="age" class="mt-2">Age</label>
+            <input 
+                [max] = "maxDate"
+                formControlName = "age"
+                id="age" 
+                type="date" 
+                class="form-control">
+                <div *ngIf="form.get('age').errors?.ageValidator" class="alert alert-danger">You can't register if you younger then 18</div>
+    </div>
+    <div class="form-group">
+            <label for="salary" class="mt-2">Salary</label>
+            <input 
+                formControlName = "salary"
+                id="salary" 
+                type="text" 
+                [value]="form.get('salary').value | salaryPipe"
+                class="form-control">
+                <div *ngIf="form.get('salary').errors?.pattern" class="alert alert-danger">Salary can contain only digits</div>
+    </div>
+    <div *ngIf="form.errors" class="alert alert-danger">Please enter all field and correct parameters</div>
+    <button class="btn" type="submit"  appHoverButton>Sign Up</button>
+</form>
+</div>

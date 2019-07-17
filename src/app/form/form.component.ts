@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm, FormControl } from "@angular/forms";
-import { Container } from "@angular/compiler/src/i18n/i18n_ast";
 
 @Component({
   selector: "app-form",
@@ -9,25 +8,24 @@ import { Container } from "@angular/compiler/src/i18n/i18n_ast";
 })
 
 export class FormComponent implements OnInit {
-  name: FormControl = new FormControl("");
-  surname: FormControl = new FormControl("");
-  email: FormControl = new FormControl("");
-  users = [];
+  todo: FormControl = new FormControl("");
+  list = [];
 
   constructor() {}
 
   onClick(): void {
     let obj = {
-      name: this.name.value,
-      surname: this.surname.value,
-      email: this.email.value
+      todo: this.todo.value,
     };
-    if (this.name.value != "" && this.surname.value != "") this.users.push(obj);
+    if (this.todo.value != "") this.list.push(obj);
   }
 
   onDelete($event) {
-    let index = [...$event.target.parentElement.children].indexOf($event.target);
-    this.users.splice(index, 1);
+    let index = [...$event.target.parentElement.parentElement.children].indexOf($event.target.parentElement);
+    this.list.splice(index, 1);
+  }
+  onCheck($event){
+    $event.target.style.textDecoration = "line-through"
   }
   
   ngOnInit() {}
