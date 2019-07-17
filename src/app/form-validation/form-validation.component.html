@@ -41,6 +41,6 @@
                 <div *ngIf="form.get('salary').errors?.pattern" class="alert alert-danger">Salary can contain only digits</div>
     </div>
     <div *ngIf="form.errors" class="alert alert-danger">Please enter all field and correct parameters</div>
-    <button class="btn" type="submit"  appHoverButton>Sign Up</button>
+    <button class="btn" type="submit" [disabled]="!form.valid" appHoverButton>Sign Up</button>
 </form>
 </div>
