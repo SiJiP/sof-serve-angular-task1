@@ -9,7 +9,7 @@
             id="username" 
             type="text" 
             class="form-control">
-            <div *ngIf="form.get('username').errors?.pattern" class="alert alert-danger">Incorrect user name. Username should contain "big and small letter". Length not less 3</div>
+            <div *ngIf="form.get('username').errors?.pattern"  class="alert alert-danger">Incorrect user name. Username should contain "big and small letter". Length not less 3</div>
     </div>
     <div class="form-group">
         <label for="password" class="mt-2">Password</label>
@@ -31,16 +31,24 @@
                 <div *ngIf="form.get('age').errors?.ageValidator" class="alert alert-danger">You can't register if you younger then 18</div>
     </div>
     <div class="form-group">
-            <label for="salary" class="mt-2">Salary</label>
+            <label for="salary" class="mt-2">Salary {{currency}}</label>
             <input 
                 formControlName = "salary"
                 id="salary" 
                 type="text" 
                 [value]="form.get('salary').value | salaryPipe"
                 class="form-control">
+                <label for="currency" class="mt-2">Choose currency your salary</label>
+                <select name="currency" 
+                (change)="onChange()"
+                formControlName = "currency"  
+                class="form-control mb-3" 
+                id="currency">
+                    <option [value]="currency" *ngFor="let currency of currencies">{{currency}}</option>
+                </select>
                 <div *ngIf="form.get('salary').errors?.pattern" class="alert alert-danger">Salary can contain only digits</div>
     </div>
-    <div *ngIf="form.errors" class="alert alert-danger">Please enter all field and correct parameters</div>
+    <div *ngIf="!form.valid" class="alert alert-danger">Please enter all field and correct parameters</div>
     <button class="btn" type="submit" [disabled]="!form.valid" appHoverButton>Sign Up</button>
 </form>
 </div>
