@@ -2,7 +2,6 @@ import { UsernameValidators } from './username.validators';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, ValidationErrors } from '@angular/forms';
 import { CurrencyService } from "./../currency.service";
-import { format } from 'util';
 
 @Component({
   selector: 'app-form-validation',
